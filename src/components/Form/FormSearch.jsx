@@ -2,14 +2,22 @@ import Input from "../UI/Input";
 import Button from "../UI/Button";
 import IconArrow from "../Icons/IconArrow";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useContext, useEffect } from "react";
 import useHttp from "../../hooks/use-http";
+import DataContext from "../../store/data-context";
 
 function FormSearch({ className }) {
+  const dataCtx = useContext(DataContext);
+
   const domainInput = useRef();
   const { isLoading, error, request: fetchInput } = useHttp();
   const [data, setData] = useState();
   const [errMessage, setErrMessage] = useState();
+
+  useEffect(() => {
+    // send data to context
+    if (data) dataCtx.addData(data);
+  }, [data]);
 
   const dataTransform = (dataObj) => {
     setData({
@@ -43,7 +51,6 @@ function FormSearch({ className }) {
       );
       setErrMessage(null);
     } else if (inputValue.match(domainPattern)) {
-      console.log("domain");
       fetchInput(
         {
           url: `https://geo.ipify.org/api/v2/country,city?apiKey=at_G8CVSCyiXh633m39e5DOfJMgwlz3o&domain=${inputValue}`,

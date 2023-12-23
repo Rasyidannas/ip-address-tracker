@@ -6,3 +6,5 @@ const DataContext = createContext({
   lng: "",
   addData: (data) => {},
 });
+
+export default DataContext;

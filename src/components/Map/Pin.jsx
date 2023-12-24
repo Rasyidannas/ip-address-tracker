@@ -1,6 +1,5 @@
 import { useEffect } from "react";
-import { Marker, Popup, useMap, SVGOverlay } from "react-leaflet";
-import IconPin from "../Icons/IconPin";
+import { Marker, Popup, useMap } from "react-leaflet";
 
 const Pin = function ({ onLat, onLng, onLocation }) {
   const map = useMap();
@@ -9,8 +8,6 @@ const Pin = function ({ onLat, onLng, onLocation }) {
   }, [onLat, onLng]);
 
   return (
-    // <IconPin className="relative top-1/2 left-1/2 z-[1000] -translate-y-1/2 -translate-x-1/2 w-12" />
-
     <Marker position={[onLat, onLng]}>
       <Popup>
         <p className="text-center">

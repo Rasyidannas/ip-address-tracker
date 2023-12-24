@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Marker, Popup, useMap } from "react-leaflet";
+import { iconPin } from "./Icon";
 
 const Pin = function ({ onLat, onLng, onLocation }) {
   const map = useMap();
@@ -8,7 +9,7 @@ const Pin = function ({ onLat, onLng, onLocation }) {
   }, [onLat, onLng]);
 
   return (
-    <Marker position={[onLat, onLng]}>
+    <Marker position={[onLat, onLng]} icon={iconPin}>
       <Popup>
         <p className="text-center">
           {onLocation ||

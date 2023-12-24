@@ -4,7 +4,10 @@ import ResultData from "../Result/ResultData";
 function Header() {
   return (
     <div className="relative h-56 z-40">
-      <img className="h-full" src="/assets/images/pattern-bg-desktop.png" />
+      <img
+        className="h-full w-full"
+        src="/assets/images/pattern-bg-desktop.png"
+      />
       <h1 className="absolute top-12 left-1/2 -translate-x-1/2 text-3xl font-medium text-white w-full text-center">
         IP Address Tracker
       </h1>
